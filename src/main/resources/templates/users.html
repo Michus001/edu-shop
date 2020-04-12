@@ -6,6 +6,54 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 <body>
+<div class="container">
+<h1>Users</h1>
+<h2>Add user</h2>
+<form action="#" th:action="@{/web/users}" method="post">
+    <div class="form-group">
+        <label for="name">
+            Name:
+        </label>
+        <input type="text" id="name" name="name" class="form-control">
+    </div>
+    <div class="form-group">
+            <label for="lastname">
+                Last name:
+            </label>
+        <input type="text" id="lastname" name="lastname" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="haircolor">
+            Hair color:
+        </label>
+        <select id="haircolor" name="hairColor" class="form-control">
+            <option value="blond">Blond</option>
+            <option value="hneda">Hneda</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
 
+<h2>Registered users</h2>
+<table class="table table-striped table-hover">
+    <thead class="thead-dark">
+        <th>Id</th>
+        <th>Name</th>
+        <th>Last name</th>
+        <th>Hair color</th>
+    </thead>
+    <tbody>
+        <tr th:if="${users.empty}">
+            <td colspan="4">No users available.</td>
+        </tr>
+        <tr th:each="user : ${users}">
+            <td><span th:text="${user.id}"></span> </td>
+            <td><span th:text="${user.name}"></span> </td>
+            <td><span th:text="${user.lastname}"></span> </td>
+            <td><span th:text="${user.hairColor}"></span> </td>
+        </tr>
+    </tbody>
+</table>
+</div>
 </body>
 </html>
